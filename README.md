@@ -34,4 +34,4 @@ swift test --package-path BlankSpaceCore
 
 ## Status
 
-Phase 0: project scaffold. Widgets render a starter list of Apple apps. The in-app editor comes next.
+Phase 1: launcher MVP. In-app editor with a 200-app catalog, search, custom URL schemes, Shortcut fallback, rename, reorder, delete, up to five pages, and style controls with a live preview. Next: custom wallpaper, in-app setup guide, lock screen widget.

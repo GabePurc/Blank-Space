@@ -34,21 +34,10 @@ struct TopWidgetView: View {
     let entry: TopEntry
 
     var body: some View {
-        let style = entry.style
-        Group {
-            switch entry.content {
-            case .blank:
-                Color.clear
-            case .date:
-                Text(entry.date, format: .dateTime.weekday(.wide).month(.abbreviated).day())
-            case .weekday:
-                Text(entry.date, format: .dateTime.weekday(.wide))
-            }
-        }
-        .font(.system(size: style.textSize, weight: .medium, design: style.fontDesign.design))
-        .foregroundStyle(style.theme.foreground)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: Alignment(horizontal: style.alignment.horizontalAlignment, vertical: .bottom))
-        .containerBackground(style.theme.background, for: .widget)
+        TopContentView(date: entry.date, content: entry.content, style: entry.style)
+            .padding(.horizontal, WidgetInsets.horizontal)
+            .padding(.vertical, WidgetInsets.vertical)
+            .containerBackground(entry.style.theme.background, for: .widget)
     }
 }
 

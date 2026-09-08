@@ -8,7 +8,7 @@ struct Blank_SpaceApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
                 .environment(model)
                 .onOpenURL { url in
                     handle(url)

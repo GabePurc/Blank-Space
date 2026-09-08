@@ -40,27 +40,14 @@ struct LauncherWidgetView: View {
     let entry: LauncherEntry
 
     var body: some View {
-        let style = entry.style
-        VStack(alignment: style.alignment.horizontalAlignment, spacing: style.lineSpacing) {
-            if entry.page.apps.isEmpty {
-                Text("Add apps")
-                    .foregroundStyle(style.theme.foreground.opacity(0.4))
-            } else {
-                ForEach(entry.page.apps) { app in
-                    // Widgets can only open their host app. The app receives this URL
-                    // and redirects to the real target. See LaunchRouter.
-                    Link(destination: LaunchRouter.widgetURL(for: app)) {
-                        Text(app.name)
-                            .lineLimit(1)
-                            .frame(maxWidth: .infinity, alignment: style.alignment.frameAlignment)
-                    }
-                }
-            }
+        // Widgets can only open their host app. Each row links into the app,
+        // which redirects to the real target. See LaunchRouter.
+        LauncherRowsView(apps: entry.page.apps, style: entry.style) { app in
+            LaunchRouter.widgetURL(for: app)
         }
-        .font(.system(size: style.textSize, weight: .medium, design: style.fontDesign.design))
-        .foregroundStyle(style.theme.foreground)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .containerBackground(style.theme.background, for: .widget)
+        .padding(.horizontal, WidgetInsets.horizontal)
+        .padding(.vertical, WidgetInsets.vertical)
+        .containerBackground(entry.style.theme.background, for: .widget)
     }
 }
 
