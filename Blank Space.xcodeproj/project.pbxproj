@@ -6,23 +6,91 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B5A0000000000000000A000B /* BlankSpaceWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = B5A0000000000000000A0001 /* BlankSpaceWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B5A0000000000000000B0003 /* BlankSpaceCore in Frameworks */ = {isa = PBXBuildFile; productRef = B5A0000000000000000B0002 /* BlankSpaceCore */; };
+		B5A0000000000000000B0005 /* BlankSpaceCore in Frameworks */ = {isa = PBXBuildFile; productRef = B5A0000000000000000B0004 /* BlankSpaceCore */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5A0000000000000000A000D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C5883FC2304F978A002F1A9C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5A0000000000000000A0003;
+			remoteInfo = BlankSpaceWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B5A0000000000000000A000A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B5A0000000000000000A000B /* BlankSpaceWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		B5A0000000000000000A0001 /* BlankSpaceWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BlankSpaceWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5883FCA304F978A002F1A9C /* Blank Space.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blank Space.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B5A0000000000000000A000E /* Exceptions for "BlankSpaceWidgets" folder in "BlankSpaceWidgets" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B5A0000000000000000A0003 /* BlankSpaceWidgets */;
+		};
+		B5A0000000000000000A000F /* Exceptions for "Blank Space" folder in "Blank Space" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = C5883FC9304F978A002F1A9C /* Blank Space */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		B5A0000000000000000A0002 /* BlankSpaceWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B5A0000000000000000A000E /* Exceptions for "BlankSpaceWidgets" folder in "BlankSpaceWidgets" target */,
+			);
+			path = BlankSpaceWidgets;
+			sourceTree = "<group>";
+		};
 		C5883FCC304F978A002F1A9C /* Blank Space */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B5A0000000000000000A000F /* Exceptions for "Blank Space" folder in "Blank Space" target */,
+			);
 			path = "Blank Space";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B5A0000000000000000A0005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5A0000000000000000B0005 /* BlankSpaceCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5883FC7304F978A002F1A9C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A0000000000000000B0003 /* BlankSpaceCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				C5883FCC304F978A002F1A9C /* Blank Space */,
+				B5A0000000000000000A0002 /* BlankSpaceWidgets */,
 				C5883FCB304F978A002F1A9C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				C5883FCA304F978A002F1A9C /* Blank Space.app */,
+				B5A0000000000000000A0001 /* BlankSpaceWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +118,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B5A0000000000000000A0003 /* BlankSpaceWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5A0000000000000000A0007 /* Build configuration list for PBXNativeTarget "BlankSpaceWidgets" */;
+			buildPhases = (
+				B5A0000000000000000A0004 /* Sources */,
+				B5A0000000000000000A0005 /* Frameworks */,
+				B5A0000000000000000A0006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B5A0000000000000000A0002 /* BlankSpaceWidgets */,
+			);
+			name = BlankSpaceWidgets;
+			packageProductDependencies = (
+				B5A0000000000000000B0004 /* BlankSpaceCore */,
+			);
+			productName = BlankSpaceWidgets;
+			productReference = B5A0000000000000000A0001 /* BlankSpaceWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C5883FC9304F978A002F1A9C /* Blank Space */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5883FD5304F978B002F1A9C /* Build configuration list for PBXNativeTarget "Blank Space" */;
@@ -55,16 +148,19 @@
 				C5883FC6304F978A002F1A9C /* Sources */,
 				C5883FC7304F978A002F1A9C /* Frameworks */,
 				C5883FC8304F978A002F1A9C /* Resources */,
+				B5A0000000000000000A000A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B5A0000000000000000A000C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				C5883FCC304F978A002F1A9C /* Blank Space */,
 			);
 			name = "Blank Space";
 			packageProductDependencies = (
+				B5A0000000000000000B0002 /* BlankSpaceCore */,
 			);
 			productName = "Blank Space";
 			productReference = C5883FCA304F978A002F1A9C /* Blank Space.app */;
@@ -80,6 +176,9 @@
 				LastSwiftUpdateCheck = 2660;
 				LastUpgradeCheck = 2660;
 				TargetAttributes = {
+					B5A0000000000000000A0003 = {
+						CreatedOnToolsVersion = 26.6;
+					};
 					C5883FC9304F978A002F1A9C = {
 						CreatedOnToolsVersion = 26.6;
 					};
@@ -94,17 +193,28 @@
 			);
 			mainGroup = C5883FC1304F978A002F1A9C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B5A0000000000000000B0001 /* XCLocalSwiftPackageReference "BlankSpaceCore" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C5883FCB304F978A002F1A9C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				C5883FC9304F978A002F1A9C /* Blank Space */,
+				B5A0000000000000000A0003 /* BlankSpaceWidgets */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B5A0000000000000000A0006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5883FC8304F978A002F1A9C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +225,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B5A0000000000000000A0004 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5883FC6304F978A002F1A9C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +241,71 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B5A0000000000000000A000C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5A0000000000000000A0003 /* BlankSpaceWidgets */;
+			targetProxy = B5A0000000000000000A000D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		B5A0000000000000000A0008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BlankSpaceWidgets/BlankSpaceWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 74Q7F9KPJ4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlankSpaceWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "-";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "FactoryOne.Blank-Space.Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B5A0000000000000000A0009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BlankSpaceWidgets/BlankSpaceWidgets.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 74Q7F9KPJ4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlankSpaceWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "-";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "FactoryOne.Blank-Space.Widgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C5883FD3304F978B002F1A9C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -178,7 +359,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -236,7 +417,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -251,11 +432,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Blank Space/Blank Space.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 74Q7F9KPJ4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Blank Space/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -283,11 +466,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Blank Space/Blank Space.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 74Q7F9KPJ4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Blank Space/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -313,6 +498,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B5A0000000000000000A0007 /* Build configuration list for PBXNativeTarget "BlankSpaceWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5A0000000000000000A0008 /* Debug */,
+				B5A0000000000000000A0009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C5883FC5304F978A002F1A9C /* Build configuration list for PBXProject "Blank Space" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -332,6 +526,24 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		B5A0000000000000000B0001 /* XCLocalSwiftPackageReference "BlankSpaceCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = BlankSpaceCore;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B5A0000000000000000B0002 /* BlankSpaceCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BlankSpaceCore;
+		};
+		B5A0000000000000000B0004 /* BlankSpaceCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BlankSpaceCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C5883FC2304F978A002F1A9C /* Project object */;
 }
