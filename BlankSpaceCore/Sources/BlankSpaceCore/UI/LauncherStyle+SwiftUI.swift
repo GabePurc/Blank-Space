@@ -94,3 +94,10 @@ extension LauncherStyle {
     public static let textSizeRange: ClosedRange<Double> = 14...34
     public static let lineSpacingRange: ClosedRange<Double> = 0...18
 }
+
+extension CalibrationColor {
+    /// Solid pink drawn by the widgets while calibrating.
+    public static var swiftUIColor: Color {
+        Color(red: red, green: green, blue: blue)
+    }
+}

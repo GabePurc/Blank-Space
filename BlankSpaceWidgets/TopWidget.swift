@@ -6,12 +6,13 @@ struct TopEntry: TimelineEntry {
     let date: Date
     let content: TopWidgetContent
     let style: LauncherStyle
+    let background: WidgetBackground
 }
 
 /// The medium widget that fills the top of the screen. Refreshes at midnight so the date stays right.
 struct TopProvider: TimelineProvider {
     func placeholder(in context: Context) -> TopEntry {
-        TopEntry(date: .now, content: .date, style: LauncherStyle())
+        TopEntry(date: .now, content: .date, style: LauncherStyle(), background: .theme(.black))
     }
 
     func getSnapshot(in context: Context, completion: @escaping (TopEntry) -> Void) {
@@ -26,7 +27,12 @@ struct TopProvider: TimelineProvider {
 
     private func current(at date: Date) -> TopEntry {
         let document = LauncherStore.shared.load()
-        return TopEntry(date: date, content: document.topWidget, style: document.style)
+        return TopEntry(
+            date: date,
+            content: document.topWidget,
+            style: document.style,
+            background: .current(for: .top, document: document)
+        )
     }
 }
 
@@ -34,10 +40,18 @@ struct TopWidgetView: View {
     let entry: TopEntry
 
     var body: some View {
-        TopContentView(date: entry.date, content: entry.content, style: entry.style)
-            .padding(.horizontal, WidgetInsets.horizontal)
-            .padding(.vertical, WidgetInsets.vertical)
-            .containerBackground(entry.style.theme.background, for: .widget)
+        Group {
+            if entry.background.isCalibration {
+                Color.clear
+            } else {
+                TopContentView(date: entry.date, content: entry.content, style: entry.style)
+                    .padding(.horizontal, WidgetInsets.horizontal)
+                    .padding(.vertical, WidgetInsets.vertical)
+            }
+        }
+        .containerBackground(for: .widget) {
+            WidgetBackgroundView(background: entry.background)
+        }
     }
 }
 
@@ -56,6 +70,6 @@ struct TopWidget: Widget {
 #Preview("Top", as: .systemMedium) {
     TopWidget()
 } timeline: {
-    TopEntry(date: .now, content: .date, style: LauncherStyle())
-    TopEntry(date: .now, content: .weekday, style: LauncherStyle(theme: .light))
+    TopEntry(date: .now, content: .date, style: LauncherStyle(), background: .theme(.black))
+    TopEntry(date: .now, content: .weekday, style: LauncherStyle(theme: .light), background: .theme(.light))
 }

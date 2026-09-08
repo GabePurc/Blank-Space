@@ -8,6 +8,7 @@ struct StyleView: View {
 
     @State private var style: LauncherStyle
     @State private var topWidget: TopWidgetContent
+    @State private var slices: [WallpaperSlot: UIImage] = [:]
 
     init(style: LauncherStyle, topWidget: TopWidgetContent) {
         _style = State(initialValue: style)
@@ -21,13 +22,15 @@ struct StyleView: View {
                     WidgetPreviewView(
                         apps: model.document.page(at: 0).apps,
                         style: style,
-                        topWidget: topWidget
+                        topWidget: topWidget,
+                        topImage: slices[.top],
+                        largeImage: slices[.large]
                     )
                     .listRowInsets(EdgeInsets())
                     .listRowBackground(Color.clear)
                 }
 
-                Section("Widget") {
+                Section {
                     Picker("Background", selection: $style.theme) {
                         ForEach(WidgetTheme.allCases, id: \.self) { Text($0.displayName).tag($0) }
                     }
@@ -46,6 +49,12 @@ struct StyleView: View {
 
                     sliderRow("Size", value: $style.textSize, range: LauncherStyle.textSizeRange)
                     sliderRow("Spacing", value: $style.lineSpacing, range: LauncherStyle.lineSpacingRange)
+                } header: {
+                    Text("Widget")
+                } footer: {
+                    if !slices.isEmpty {
+                        Text("Wallpaper slices are on, so Background only sets the text color.")
+                    }
                 }
 
                 Section("Top widget") {
@@ -62,6 +71,11 @@ struct StyleView: View {
                 }
             }
             .navigationTitle("Style")
+            .task {
+                if model.document.wallpaper.enabled {
+                    slices = WallpaperProcessor.savedSlices()
+                }
+            }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

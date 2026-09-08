@@ -10,5 +10,6 @@ struct BlankSpaceWidgetsBundle: WidgetBundle {
         LauncherWidget3()
         LauncherWidget4()
         LauncherWidget5()
+        LockScreenWidget()
     }
 }

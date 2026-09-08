@@ -8,6 +8,7 @@ struct LauncherEntry: TimelineEntry {
     let date: Date
     let page: Page
     let style: LauncherStyle
+    let background: WidgetBackground
 }
 
 /// Reads one page from the shared store. The app reloads timelines after every save,
@@ -17,7 +18,7 @@ struct LauncherProvider: TimelineProvider {
 
     func placeholder(in context: Context) -> LauncherEntry {
         let starter = LauncherDocument.starter
-        return LauncherEntry(date: .now, page: starter.page(at: 0), style: starter.style)
+        return LauncherEntry(date: .now, page: starter.page(at: 0), style: starter.style, background: .theme(starter.style.theme))
     }
 
     func getSnapshot(in context: Context, completion: @escaping (LauncherEntry) -> Void) {
@@ -30,7 +31,12 @@ struct LauncherProvider: TimelineProvider {
 
     private func current() -> LauncherEntry {
         let document = LauncherStore.shared.load()
-        return LauncherEntry(date: .now, page: document.page(at: pageIndex), style: document.style)
+        return LauncherEntry(
+            date: .now,
+            page: document.page(at: pageIndex),
+            style: document.style,
+            background: .current(for: .large, document: document)
+        )
     }
 }
 
@@ -40,14 +46,23 @@ struct LauncherWidgetView: View {
     let entry: LauncherEntry
 
     var body: some View {
-        // Widgets can only open their host app. Each row links into the app,
-        // which redirects to the real target. See LaunchRouter.
-        LauncherRowsView(apps: entry.page.apps, style: entry.style) { app in
-            LaunchRouter.widgetURL(for: app)
+        Group {
+            if entry.background.isCalibration {
+                // Text would confuse frame detection; show the solid color alone.
+                Color.clear
+            } else {
+                // Widgets can only open their host app. Each row links into the app,
+                // which redirects to the real target. See LaunchRouter.
+                LauncherRowsView(apps: entry.page.apps, style: entry.style) { app in
+                    LaunchRouter.widgetURL(for: app)
+                }
+                .padding(.horizontal, WidgetInsets.horizontal)
+                .padding(.vertical, WidgetInsets.vertical)
+            }
         }
-        .padding(.horizontal, WidgetInsets.horizontal)
-        .padding(.vertical, WidgetInsets.vertical)
-        .containerBackground(entry.style.theme.background, for: .widget)
+        .containerBackground(for: .widget) {
+            WidgetBackgroundView(background: entry.background)
+        }
     }
 }
 
@@ -55,13 +70,14 @@ struct LauncherWidgetView: View {
 
 /// Each home screen page needs its own widget kind, so there are five thin wrappers.
 private func launcherConfiguration(pageIndex: Int) -> some WidgetConfiguration {
-    StaticConfiguration(
-        kind: "com.blankspace.launcher.\(pageIndex + 1)",
-        provider: LauncherProvider(pageIndex: pageIndex)
-    ) { entry in
+    // Plain String values, not interpolated literals: WidgetKit asserts on a
+    // LocalizedStringKey with arguments here, which kills the whole extension.
+    let kind = "com.blankspace.launcher.\(pageIndex + 1)"
+    let name = "Widget \(pageIndex + 1)"
+    return StaticConfiguration(kind: kind, provider: LauncherProvider(pageIndex: pageIndex)) { entry in
         LauncherWidgetView(entry: entry)
     }
-    .configurationDisplayName("Widget \(pageIndex + 1)")
+    .configurationDisplayName(name)
     .description("A text-only list of your apps.")
     .supportedFamilies([.systemLarge])
     .contentMarginsDisabled()
@@ -77,6 +93,7 @@ struct LauncherWidget5: Widget { var body: some WidgetConfiguration { launcherCo
     LauncherWidget1()
 } timeline: {
     let starter = LauncherDocument.starter
-    LauncherEntry(date: .now, page: starter.page(at: 0), style: starter.style)
-    LauncherEntry(date: .now, page: starter.page(at: 0), style: LauncherStyle(alignment: .center, theme: .light))
+    LauncherEntry(date: .now, page: starter.page(at: 0), style: starter.style, background: .theme(.black))
+    LauncherEntry(date: .now, page: starter.page(at: 0), style: LauncherStyle(alignment: .center, theme: .light), background: .theme(.light))
+    LauncherEntry(date: .now, page: starter.page(at: 0), style: starter.style, background: .calibration)
 }

@@ -6,6 +6,8 @@ struct WidgetPreviewView: View {
     let apps: [AppEntry]
     let style: LauncherStyle
     let topWidget: TopWidgetContent
+    var topImage: UIImage? = nil
+    var largeImage: UIImage? = nil
 
     private let corner: CGFloat = 22
 
@@ -15,19 +17,31 @@ struct WidgetPreviewView: View {
                 .padding(.horizontal, WidgetInsets.horizontal)
                 .padding(.vertical, WidgetInsets.vertical)
                 .frame(height: 150)
-                .background(style.theme.background, in: RoundedRectangle(cornerRadius: corner, style: .continuous))
+                .background { background(topImage) }
 
             LauncherRowsView(apps: apps, style: style)
                 .padding(.horizontal, WidgetInsets.horizontal)
                 .padding(.vertical, WidgetInsets.vertical)
                 .frame(height: 330)
                 .clipped()
-                .background(style.theme.background, in: RoundedRectangle(cornerRadius: corner, style: .continuous))
+                .background { background(largeImage) }
         }
         .padding(16)
         .frame(maxWidth: 360)
         .frame(maxWidth: .infinity)
         .background(Color(.systemGroupedBackground))
+    }
+
+    @ViewBuilder
+    private func background(_ image: UIImage?) -> some View {
+        let shape = RoundedRectangle(cornerRadius: corner, style: .continuous)
+        if let image {
+            Color.clear
+                .overlay { Image(uiImage: image).resizable().scaledToFill() }
+                .clipShape(shape)
+        } else {
+            shape.fill(style.theme.background)
+        }
     }
 }
 

@@ -34,4 +34,4 @@ swift test --package-path BlankSpaceCore
 
 ## Status
 
-Phase 1: launcher MVP. In-app editor with a 200-app catalog, search, custom URL schemes, Shortcut fallback, rename, reorder, delete, up to five pages, and style controls with a live preview. Next: custom wallpaper, in-app setup guide, lock screen widget.
+Phase 2: wallpaper matching, setup guide, lock screen widget. Widgets turn pink for a calibration screenshot, the app detects their exact frames and crops the wallpaper to match so the dock and widget edges disappear. Plain wallpapers save to Photos. A configurable Lock Screen widget opens any app. Next: faster launches via an interactive widget intent.

@@ -123,11 +123,18 @@ struct HomeView: View {
 
     private var setupSection: some View {
         Section {
-            Label("Touch and hold your Home Screen, tap Edit, then Add Widget.", systemImage: "1.circle")
-            Label("Search for Blank Space and add Top Widget, then Widget 1.", systemImage: "2.circle")
-            Label("Swipe your other Home Screen pages away and hide them.", systemImage: "3.circle")
+            NavigationLink {
+                SetupView()
+            } label: {
+                Label("Setup guide", systemImage: "list.number")
+            }
+            NavigationLink {
+                WallpaperView()
+            } label: {
+                Label("Wallpaper", systemImage: "photo")
+            }
         } header: {
-            Text("Set up your Home Screen")
+            Text("Home Screen")
         } footer: {
             Text("The widgets read this list. Changes here show up on the Home Screen right away.")
         }

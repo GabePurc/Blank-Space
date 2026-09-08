@@ -259,7 +259,7 @@
 				DEVELOPMENT_TEAM = 74Q7F9KPJ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlankSpaceWidgets/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "-";
+				INFOPLIST_KEY_CFBundleDisplayName = "Blank Space";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -287,7 +287,7 @@
 				DEVELOPMENT_TEAM = 74Q7F9KPJ4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlankSpaceWidgets/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "-";
+				INFOPLIST_KEY_CFBundleDisplayName = "Blank Space";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

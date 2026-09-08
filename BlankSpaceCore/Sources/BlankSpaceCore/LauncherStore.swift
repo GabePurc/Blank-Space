@@ -4,6 +4,13 @@ public enum AppGroup {
     /// Shared container between the app and the widget extension.
     /// Must match both targets' entitlements.
     public static let identifier = "group.FactoryOne.Blank-Space"
+
+    /// The shared container, or Application Support when entitlements are missing
+    /// (an unsigned CI build, for example) so nothing crashes on startup.
+    public static func containerURL(groupIdentifier: String = identifier) -> URL {
+        FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
+            ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+    }
 }
 
 /// Reads and writes the launcher document in the App Group container.
@@ -16,11 +23,7 @@ public struct LauncherStore: Sendable {
     public let fileURL: URL
 
     public init(groupIdentifier: String = AppGroup.identifier, fileName: String = "launcher.json") {
-        let container = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: groupIdentifier)
-            // Falls back when entitlements are missing, e.g. an unsigned CI build,
-            // so the app never crashes on startup.
-            ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-        fileURL = container.appendingPathComponent(fileName)
+        fileURL = AppGroup.containerURL(groupIdentifier: groupIdentifier).appendingPathComponent(fileName)
     }
 
     public init(fileURL: URL) {
